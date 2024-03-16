@@ -97,7 +97,7 @@ module pipMCUwHazardProtect(
         
      reg_nb_sclr #(.n(64)) IF_DEC_REG(
         .data_in  ({pcOUT, ir}),      // PC -> [63:32], Instruction -> [31:0]
-        .ld       ((~stall) || (~stallJ)),
+        .ld       ((~stall) && (~stallJ)),
         .clk      (clk), 
         .clr      (flush || RESET || jump), // clear sig
         .data_out (if_dec_pip)
