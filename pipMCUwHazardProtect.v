@@ -73,7 +73,7 @@ module pipMCUwHazardProtect(
 
      reg_neg #(.n(32)) myPC(
         .data_in  (pcIN), 
-        .ld       ((~stall) || (~stallJ)),
+        .ld       ((~stall) && (~stallJ)),
         .clk      (clk), 
         .clr      (RESET), // clear sig
         .data_out (pcOUT)
